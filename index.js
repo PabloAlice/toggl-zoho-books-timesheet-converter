@@ -17,7 +17,7 @@ function reformatDate(val) {
 csv
   .fromPath(inputFile, { headers: true })
   .transform(row => {
-    row.Billable = 'Billable';
+    row.Billable = row['Client'] === 'Admios Internal' ? 'Non-billable' : 'Billable';
     row['Start time'] = reformatTime(row['Start time']);
     row['Start date'] = reformatDate(row['Start date']);
     row['End date'] = reformatDate(row['End date']);
